@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        1.51.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        ASL 2.0
@@ -50,5 +50,8 @@ rm -rf *.egg-info
 
 
 %changelog
+* Sun May 31 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1.51.0-2
+- Rebuild for Python 3.9
+
 * Fri May 29 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1.51.0-1
 - Initial RPM release
