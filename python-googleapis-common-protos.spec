@@ -27,7 +27,7 @@ Summary:        %{summary}
 
 
 %prep
-%autosetup -n %{srcname}-%{version}
+%autosetup -n python-api-common-protos-%{version}
 
 # Remove bundled egg-info
 rm -rf *.egg-info
@@ -42,7 +42,7 @@ rm -rf *.egg-info
 
 
 %files -n python3-%{srcname}
-%doc README.rst
+%doc CHANGELOG.md CONTRIBUTING.md README.md
 %license LICENSE
 %{python3_sitelib}/google/
 %{python3_sitelib}/googleapis_common_protos-*.egg-info/
