@@ -7,8 +7,8 @@ Release:        1%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        ASL 2.0
-URL:            https://pypi.org/project/%{srcname}/
-Source0:        %pypi_source
+URL:            https://github.com/googleapis/python-api-common-protos/
+Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  python3-devel
 BuildRequires:  %{py3_dist setuptools}
