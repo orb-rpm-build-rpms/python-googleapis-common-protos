@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        1.53.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        ASL 2.0
@@ -50,6 +50,9 @@ rm -rf *.egg-info
 
 
 %changelog
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.53.0-2
+- Rebuilt for Python 3.10
+
 * Sun Mar 21 2021 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1.53.0-1
 - Update to 1.53.0
 
