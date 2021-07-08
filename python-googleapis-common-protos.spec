@@ -21,7 +21,6 @@ BuildArch:      noarch
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname} %{common_description}
 
@@ -52,6 +51,7 @@ rm -rf *.egg-info
 %changelog
 * Thu Jul 08 2021 Benjamin A. Beasley <code@musicinmybrain.net> - 1.53.0-3
 - Tweak how the description macro is written
+- Drop obsolete python_provide macro
 
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.53.0-2
 - Rebuilt for Python 3.10
