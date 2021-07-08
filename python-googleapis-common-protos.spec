@@ -9,14 +9,19 @@ License:        ASL 2.0
 URL:            https://github.com/googleapis/python-api-common-protos/
 Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
 
-BuildRequires:  python3-devel
-BuildRequires:  %{py3_dist setuptools}
 BuildArch:      noarch
+
+BuildRequires:  python3-devel
+BuildRequires:  pyproject-rpm-macros
 
 %global common_description %{expand:
 %{summary}.}
 
 %description %{common_description}
+
+
+%generate_buildrequires
+%pyproject_buildrequires -r
 
 
 %package -n python3-%{srcname}
@@ -28,30 +33,30 @@ Summary:        %{summary}
 %prep
 %autosetup -n python-api-common-protos-%{version}
 
-# Remove bundled egg-info
-rm -rf *.egg-info
-
 
 %build
-%py3_build
+%pyproject_wheel
 
 
 %install
-%py3_install
+%pyproject_install
+%pyproject_save_files google
 
 
-%files -n python3-%{srcname}
-%doc CHANGELOG.md CONTRIBUTING.md README.md
+%files -n python3-%{srcname} -f %{pyproject_files}
 %license LICENSE
-%{python3_sitelib}/google/
-%{python3_sitelib}/googleapis_common_protos-*.egg-info/
-%{python3_sitelib}/googleapis_common_protos-*-nspkg.pth
+%doc CHANGELOG.md
+%doc CONTRIBUTING.md
+%doc README.md
+
+%{python3_sitelib}/googleapis_common_protos-%{version}-py%{python3_version}-nspkg.pth
 
 
 %changelog
 * Thu Jul 08 2021 Benjamin A. Beasley <code@musicinmybrain.net> - 1.53.0-3
 - Tweak how the description macro is written
 - Drop obsolete python_provide macro
+- Switch to pyproject-rpm-macros
 
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.53.0-2
 - Rebuilt for Python 3.10
