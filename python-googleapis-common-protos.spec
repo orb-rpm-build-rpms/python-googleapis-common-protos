@@ -1,9 +1,8 @@
 %global srcname googleapis-common-protos
-%global _description %{summary}.
 
 Name:           python-%{srcname}
 Version:        1.53.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        ASL 2.0
@@ -14,16 +13,17 @@ BuildRequires:  python3-devel
 BuildRequires:  %{py3_dist setuptools}
 BuildArch:      noarch
 
-%description
-%{_description}
+%global common_description %{expand:
+%{summary}.}
+
+%description %{common_description}
 
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{srcname}}
 
-%description -n python3-%{srcname}
-%{_description}
+%description -n python3-%{srcname} %{common_description}
 
 
 %prep
@@ -50,6 +50,9 @@ rm -rf *.egg-info
 
 
 %changelog
+* Thu Jul 08 2021 Benjamin A. Beasley <code@musicinmybrain.net> - 1.53.0-3
+- Tweak how the description macro is written
+
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.53.0-2
 - Rebuilt for Python 3.10
 
