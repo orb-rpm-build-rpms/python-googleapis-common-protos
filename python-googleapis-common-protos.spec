@@ -7,7 +7,7 @@
 
 Name:           python-%{srcname}
 Version:        1.53.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        ASL 2.0
@@ -59,12 +59,6 @@ Summary:        %{summary}
 # Upstream has no tests.
 #
 # Note that google and google.logging are namespace packages.
-#
-# The %%py3_check_import macro will be backported to all Fedora and EPEL
-# releases, but for now it is brand-new in Rawhide. We should remove the
-# version conditional as soon as we can.
-%if 0%{?fedora} > 34
-
 %{py3_check_import google.api
      google.api.annotations_pb2
      google.api.auth_pb2
@@ -131,8 +125,6 @@ Summary:        %{summary}
     google.longrunning.operations_pb2_grpc}
 %endif
 
-%endif
-
 
 %files -n python3-%{srcname} -f %{pyproject_files}
 %license LICENSE
@@ -144,6 +136,10 @@ Summary:        %{summary}
 
 
 %changelog
+* Thu Jul 08 2021 Benjamin A. Beasley <code@musicinmybrain.net> - 1.53.0-4
+- Drop version conditional; maintain the existing practice of cherry-picking
+  updates to stable branches rather than merging
+
 * Thu Jul 08 2021 Benjamin A. Beasley <code@musicinmybrain.net> - 1.53.0-3
 - Tweak how the description macro is written
 - Drop obsolete python_provide macro
