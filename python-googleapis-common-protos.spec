@@ -21,6 +21,10 @@ BuildRequires:  pyproject-rpm-macros
 
 
 %generate_buildrequires
+# Let’s not install the “grpc” extra here if we can help it. That would add a
+# BR on python3dist(grpcio), but this package is required by
+# python3dist(grpcio-status), which would create a circular dependency with
+# grpc.
 %pyproject_buildrequires -r
 
 
@@ -28,6 +32,9 @@ BuildRequires:  pyproject-rpm-macros
 Summary:        %{summary}
 
 %description -n python3-%{srcname} %{common_description}
+
+
+%pyproject_extras_subpkg -n python3-%{srcname} grpc
 
 
 %prep
@@ -57,6 +64,7 @@ Summary:        %{summary}
 - Tweak how the description macro is written
 - Drop obsolete python_provide macro
 - Switch to pyproject-rpm-macros
+- Add the metapackage for the “grpc” extra
 
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.53.0-2
 - Rebuilt for Python 3.10
