@@ -7,7 +7,7 @@
 
 Name:           python-%{srcname}
 Version:        1.53.0
-Release:        4%{?dist}
+Release:        %autorelease
 Summary:        Common protobufs used in Google APIs
 
 License:        ASL 2.0
@@ -136,34 +136,4 @@ Summary:        %{summary}
 
 
 %changelog
-* Thu Jul 08 2021 Benjamin A. Beasley <code@musicinmybrain.net> - 1.53.0-4
-- Drop version conditional; maintain the existing practice of cherry-picking
-  updates to stable branches rather than merging
-
-* Thu Jul 08 2021 Benjamin A. Beasley <code@musicinmybrain.net> - 1.53.0-3
-- Tweak how the description macro is written
-- Drop obsolete python_provide macro
-- Switch to pyproject-rpm-macros
-- Add the metapackage for the “grpc” extra
-- Add a check section that “smoke-tests” imports
-
-* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.53.0-2
-- Rebuilt for Python 3.10
-
-* Sun Mar 21 2021 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1.53.0-1
-- Update to 1.53.0
-
-* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.52.0-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
-
-* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.52.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
-
-* Thu Jun 18 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1.52.0-1
-- Update to 1.52.0
-
-* Sun May 31 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1.51.0-2
-- Rebuild for Python 3.9
-
-* Fri May 29 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1.51.0-1
-- Initial RPM release
+%autochangelog
