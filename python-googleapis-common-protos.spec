@@ -25,14 +25,6 @@ BuildRequires:  pyproject-rpm-macros
 %description %{common_description}
 
 
-%generate_buildrequires
-%if %{without bootstrap}
-%pyproject_buildrequires -x grpc
-%else
-%pyproject_buildrequires -r
-%endif
-
-
 %package -n python3-%{srcname}
 Summary:        %{summary}
 
@@ -44,6 +36,14 @@ Summary:        %{summary}
 
 %prep
 %autosetup -n python-api-common-protos-%{version}
+
+
+%generate_buildrequires
+%if %{without bootstrap}
+%pyproject_buildrequires -x grpc
+%else
+%pyproject_buildrequires -r
+%endif
 
 
 %build
