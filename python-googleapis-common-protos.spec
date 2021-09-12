@@ -17,7 +17,6 @@ Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  pyproject-rpm-macros
 
 %global common_description %{expand:
 %{summary}.}
