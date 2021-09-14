@@ -1,18 +1,16 @@
-%global srcname googleapis-common-protos
-
 # When bootstrapping, we do not include the “grpc” extra in the BR’s. That adds
 # a BR on python3dist(grpcio), but this package is required by
 # python3dist(grpcio-status), which creates a circular dependency with grpc.
 %bcond_with bootstrap
 
-Name:           python-%{srcname}
+Name:           python-googleapis-common-protos
 Version:        1.53.0
 Release:        %autorelease
 Summary:        Common protobufs used in Google APIs
 
 License:        ASL 2.0
 URL:            https://github.com/googleapis/python-api-common-protos/
-Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/googleapis-common-protos-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -24,13 +22,13 @@ BuildRequires:  python3-devel
 %description %{common_description}
 
 
-%package -n python3-%{srcname}
+%package -n python3-googleapis-common-protos
 Summary:        %{summary}
 
-%description -n python3-%{srcname} %{common_description}
+%description -n python3-googleapis-common-protos %{common_description}
 
 
-%pyproject_extras_subpkg -n python3-%{srcname} grpc
+%pyproject_extras_subpkg -n python3-googleapis-common-protos grpc
 
 
 %prep
@@ -125,7 +123,7 @@ Summary:        %{summary}
 %endif
 
 
-%files -n python3-%{srcname} -f %{pyproject_files}
+%files -n python3-googleapis-common-protos -f %{pyproject_files}
 %license LICENSE
 %doc CHANGELOG.md
 %doc CONTRIBUTING.md
