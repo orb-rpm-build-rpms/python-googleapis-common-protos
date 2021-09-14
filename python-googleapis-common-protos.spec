@@ -124,7 +124,6 @@ Summary:        %{summary}
 
 
 %files -n python3-googleapis-common-protos -f %{pyproject_files}
-%license LICENSE
 %doc CHANGELOG.md
 %doc CONTRIBUTING.md
 %doc README.md
