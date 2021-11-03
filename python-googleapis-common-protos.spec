@@ -36,11 +36,7 @@ Summary:        %{summary}
 
 
 %generate_buildrequires
-%if %{without bootstrap}
-%pyproject_buildrequires -x grpc
-%else
-%pyproject_buildrequires -r
-%endif
+%pyproject_buildrequires -r %{?!with_bootstrap:-x grpc}
 
 
 %build
