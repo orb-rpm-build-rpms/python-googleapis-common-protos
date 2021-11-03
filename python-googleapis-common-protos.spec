@@ -56,71 +56,7 @@ Summary:        %{summary}
 # Upstream has no tests.
 #
 # Note that google and google.logging are namespace packages.
-%{py3_check_import google.api
-     google.api.annotations_pb2
-     google.api.auth_pb2
-     google.api.backend_pb2
-     google.api.billing_pb2
-     google.api.client_pb2
-     google.api.config_change_pb2
-     google.api.consumer_pb2
-     google.api.context_pb2
-     google.api.control_pb2
-     google.api.distribution_pb2
-     google.api.documentation_pb2
-     google.api.endpoint_pb2
-     google.api.field_behavior_pb2
-     google.api.httpbody_pb2
-     google.api.http_pb2
-     google.api.label_pb2
-     google.api.launch_stage_pb2
-     google.api.logging_pb2
-     google.api.log_pb2
-     google.api.metric_pb2
-     google.api.monitored_resource_pb2
-     google.api.monitoring_pb2
-     google.api.quota_pb2
-     google.api.resource_pb2
-     google.api.service_pb2
-     google.api.source_info_pb2
-     google.api.system_parameter_pb2
-     google.api.usage_pb2
-     google.gapic
-     google.gapic.metadata
-     google.gapic.metadata.gapic_metadata_pb2
-     google.logging.type
-     google.logging.type.http_request_pb2
-     google.logging.type.log_severity_pb2
-     google.longrunning
-     google.longrunning.operations_pb2
-     google.longrunning.operations_proto_pb2
-     google.longrunning.operations_proto
-     google.rpc
-     google.rpc.code_pb2
-     google.rpc.error_details_pb2
-     google.rpc.status_pb2
-     google.rpc.context
-     google.rpc.context.attribute_context_pb2
-     google.type
-     google.type.calendar_period_pb2
-     google.type.color_pb2
-     google.type.date_pb2
-     google.type.datetime_pb2
-     google.type.dayofweek_pb2
-     google.type.expr_pb2
-     google.type.fraction_pb2
-     google.type.latlng_pb2
-     google.type.money_pb2
-     google.type.month_pb2
-     google.type.postal_address_pb2
-     google.type.quaternion_pb2
-     google.type.timeofday_pb2}
-
-%if %{without bootstrap}
-%{py3_check_import google.longrunning.operations_grpc_pb2
-    google.longrunning.operations_grpc
-    google.longrunning.operations_pb2_grpc}
-%endif
+%pyproject_check_import %{?with_bootstrap:-e 'google.longrunning.*grpc*'}
 
 
 %files -n python3-googleapis-common-protos -f %{pyproject_files}
