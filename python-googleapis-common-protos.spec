@@ -4,7 +4,7 @@
 %bcond_with bootstrap
 
 Name:           python-googleapis-common-protos
-Version:        1.53.0
+Version:        1.54.0
 Release:        %autorelease
 Summary:        Common protobufs used in Google APIs
 
@@ -58,6 +58,7 @@ Summary:        %{summary}
 %files -n python3-googleapis-common-protos -f %{pyproject_files}
 %doc CHANGELOG.md
 %doc CONTRIBUTING.md
+%doc CODE_OF_CONDUCT.md
 %doc README.md
 
 %{python3_sitelib}/googleapis_common_protos-%{version}-py%{python3_version}-nspkg.pth
