@@ -4,7 +4,7 @@
 %bcond_with bootstrap
 
 Name:           python-googleapis-common-protos
-Version:        1.55.0
+Version:        1.56.0
 Release:        %autorelease
 Summary:        Common protobufs used in Google APIs
 
