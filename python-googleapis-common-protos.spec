@@ -3,14 +3,19 @@
 # python3dist(grpcio-status), which creates a circular dependency with grpc.
 %bcond_with bootstrap
 
-Name:           python-googleapis-common-protos
-Version:        1.56.0
+%global         srcname     googleapis-common-protos
+%global         forgeurl    https://github.com/googleapis/python-api-common-protos/
+Version:        1.56.1
+%global         tag         v%{version}
+%forgemeta
+
+Name:           python-%{srcname}
 Release:        %autorelease
 Summary:        Common protobufs used in Google APIs
 
 License:        ASL 2.0
-URL:            https://github.com/googleapis/python-api-common-protos/
-Source0:        %{url}/archive/v%{version}/googleapis-common-protos-%{version}.tar.gz
+URL:            %forgeurl
+Source0:        %forgesource
 
 BuildArch:      noarch
 
@@ -22,17 +27,17 @@ BuildRequires:  python3-devel
 %description %{common_description}
 
 
-%package -n python3-googleapis-common-protos
+%package -n python3-%{srcname}
 Summary:        %{summary}
 
-%description -n python3-googleapis-common-protos %{common_description}
+%description -n python3-%{srcname} %{common_description}
 
 
-%pyproject_extras_subpkg -n python3-googleapis-common-protos grpc
+%pyproject_extras_subpkg -n python3-%{srcname} grpc
 
 
 %prep
-%autosetup -n python-api-common-protos-%{version}
+%forgeautosetup
 
 
 %generate_buildrequires
@@ -55,12 +60,11 @@ Summary:        %{summary}
 %pyproject_check_import %{?with_bootstrap:-e 'google.longrunning.*grpc*'}
 
 
-%files -n python3-googleapis-common-protos -f %{pyproject_files}
+%files -n python3-%{srcname} -f %{pyproject_files}
 %doc CHANGELOG.md
 %doc CONTRIBUTING.md
 %doc CODE_OF_CONDUCT.md
-%doc README.md
-
+%doc README.rst
 %{python3_sitelib}/googleapis_common_protos-%{version}-py%{python3_version}-nspkg.pth
 
 
