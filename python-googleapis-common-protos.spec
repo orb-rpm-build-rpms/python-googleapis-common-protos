@@ -1,4 +1,3 @@
-%global _with_bootstrap 1
 # When bootstrapping, we do not include the “grpc” extra in the BR’s. That adds
 # a BR on python3dist(grpcio), but this package is required by
 # python3dist(grpcio-status), which creates a circular dependency with grpc.
