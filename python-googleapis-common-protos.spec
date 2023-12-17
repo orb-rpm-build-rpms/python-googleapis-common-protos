@@ -51,7 +51,7 @@ Summary:        %{summary}
 
 %install
 %pyproject_install
-%pyproject_save_files google
+%pyproject_save_files -l google
 
 
 %check
