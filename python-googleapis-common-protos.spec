@@ -1,9 +1,9 @@
-%bcond_without  tests
+%bcond tests 1
 
 # When bootstrapping, we do not include the “grpc” extra in the BR’s. That adds
 # a BR on python3dist(grpcio), but this package is required by
 # python3dist(grpcio-status), which creates a circular dependency with grpc.
-%bcond_with bootstrap
+%bcond bootstrap 0
 
 %global         srcname     googleapis-common-protos
 %global         forgeurl    https://github.com/googleapis/python-api-common-protos/
