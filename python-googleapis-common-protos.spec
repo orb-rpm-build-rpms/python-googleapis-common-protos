@@ -65,8 +65,6 @@ PYTHONUSERBASE=%{buildroot}%{_prefix} \
 
 %files -n python3-googleapis-common-protos -f %{pyproject_files}
 %doc CHANGELOG.md
-%doc CONTRIBUTING.md
-%doc CODE_OF_CONDUCT.md
 %doc README.rst
 
 
