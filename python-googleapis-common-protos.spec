@@ -42,7 +42,7 @@ Summary:        %{summary}
 
 
 %generate_buildrequires
-%pyproject_buildrequires -r %{?!with_bootstrap:-x grpc}
+%pyproject_buildrequires %{?!with_bootstrap:-x grpc}
 
 
 %build
