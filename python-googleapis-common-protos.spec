@@ -14,6 +14,10 @@ License:        Apache-2.0
 URL:            https://github.com/googleapis/python-api-common-protos
 Source:         %{url}/archive/v%{version}/python-api-common-protos-%{version}.tar.gz
 
+# fix: increase upper limit for protobuf 5.X versions
+# https://github.com/googleapis/python-api-common-protos/pull/212
+Patch:          %{url}/pull/212.patch
+
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -38,7 +42,7 @@ Summary:        %{summary}
 
 
 %prep
-%autosetup -n python-api-common-protos-%{version}
+%autosetup -n python-api-common-protos-%{version} -p1
 
 
 %generate_buildrequires
