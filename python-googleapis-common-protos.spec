@@ -6,17 +6,20 @@
 %bcond_with bootstrap
 
 Name:           python-googleapis-common-protos
-Version:        1.63.0
+# Bumped from Fedora's 1.63.0: that release caps protobuf below 6.0 (upstream
+# setup.py plus the pull/212 patch), which cannot resolve against the protobuf
+# 6.33.5 we package. 1.75.3 requires protobuf>=6.33.5,<8.0.0 upstream, matching
+# the packaged protobuf exactly, so the downstream cap patch is no longer needed.
+Version:        1.75.3
 Release:        %autorelease
 Summary:        Common protobufs used in Google APIs
 
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-api-common-protos
-Source:         %{url}/archive/v%{version}/python-api-common-protos-%{version}.tar.gz
-
-# fix: increase upper limit for protobuf 5.X versions
-# https://github.com/googleapis/python-api-common-protos/pull/212
-Patch:          %{url}/pull/212.patch
+# The upstream GitHub repo only tags through v1.66.0 (which still caps protobuf
+# below 6.0); releases 1.68+ are published to PyPI only, so take the sdist from
+# there. It ships tests/unit, so %%check is unaffected.
+Source:         https://files.pythonhosted.org/packages/source/g/googleapis-common-protos/googleapis_common_protos-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -42,7 +45,9 @@ Summary:        %{summary}
 
 
 %prep
-%autosetup -n python-api-common-protos-%{version} -p1
+# The PyPI sdist unpacks to googleapis_common_protos-%%{version} rather than the
+# GitHub archive's python-api-common-protos-%%{version}.
+%autosetup -n googleapis_common_protos-%{version}
 
 
 %generate_buildrequires
@@ -68,7 +73,7 @@ PYTHONUSERBASE=%{buildroot}%{_prefix} \
 
 
 %files -n python3-googleapis-common-protos -f %{pyproject_files}
-%doc CHANGELOG.md
+# The PyPI sdist does not ship CHANGELOG.md, only README.rst.
 %doc README.rst
 
 
